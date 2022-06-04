@@ -1,6 +1,12 @@
 name: Deploy
 
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: 'Enter version:'
 
 jobs:
   build:
@@ -15,4 +21,5 @@ jobs:
         bundle exec pod install
     - name: Create XCFramework
       run: |
+        bundle exec fastlane bump_xcode_version version_number:${{ github.event.inputs.version }}
         ./Scripts/build.sh
