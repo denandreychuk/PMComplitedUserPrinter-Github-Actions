@@ -10,7 +10,7 @@ initialize_app(credentials, {"storageBucket": "denandreychuk-a9aa5.appspot.com"}
 
 version = sys.argv[1]
 upload_path = f"PMComplitedUserPrinter/{version}/PMComplitedUserPrinter.zip"
-filename = path.abspath(path.join(__file__, "../../outputs/PMComplitedUserPrinter.zip"))
+filename = path.abspath(path.join(__file__, "../../output/PMComplitedUserPrinter.zip"))
 
 # Upload
 
