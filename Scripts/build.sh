@@ -19,4 +19,4 @@ xcodebuild -create-xcframework \
   -framework output/xcframework_archives/ios_simulators.xcarchive/Products/Library/Frameworks/PMUserPrinter.framework \
   -output PMUserPrinter.xcframework
 
-  zip -r output/PMCompliteUserPrinter.zip LICENSE PMUserPrinter.xcframework
+  zip -r output/PMComplitedUserPrinter.zip LICENSE PMUserPrinter.xcframework
