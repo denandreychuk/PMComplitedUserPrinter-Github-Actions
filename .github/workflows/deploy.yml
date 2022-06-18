@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+
     runs-on: macos-latest
 
     steps:
@@ -22,16 +23,3 @@ jobs:
       run: |
         bundle exec fastlane bump_xcode_version version_number:${{ github.event.inputs.version }}
         ./Scripts/build.sh
-    - name: Install Python
-      uses: actions/setup-python@v3
-    - name: Install dependancies
-      run: |
-        pip install firebase_admin
-
-    - name: Create service account
-      uses: timheuer/base64-to-file@v1
-      with:
-        fileName: 'service-account-key.json'
-        encodedString: ${{ secrets.FIREBASE }}
-    - name: Uplaod file
-      run: python ./Scripts/upload.py ${{ github.event.inputs.version }}
