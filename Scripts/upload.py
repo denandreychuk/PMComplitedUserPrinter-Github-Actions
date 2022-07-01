@@ -2,7 +2,7 @@ from firebase_admin import initialize_app, credentials, storage
 from os import path
 import sys
 
-serviceAccount = "Users/runner/work/_temp/service-account.json"
+serviceAccount = "/Users/runner/work/_temp/service-account.json"
 credentials = credentials.Certificate(serviceAccount)
 
 initialize_app(credentials, {"storageBucket": "user-printer.appspot.com"})
