@@ -23,3 +23,14 @@ jobs:
       run: |
         bundle exec fastlane bump_xcode_version version_number:${{ github.event.inputs.version }}
         ./Scripts/build.sh
+    - name: Run Workflow
+      uses: timheuer/base64-to-file@v1
+      with:
+        fileName: 'service-account.json'
+        encodedString: ${{ secrets.FIREBASE }}
+    - name: Install python
+      uses: actions/setup-python@v3.1.2
+    - name: Install python dependancies
+      run: pip install firebase_admin
+    - name: Run upload script
+      run: python ./Scripts/upload.py ${{ github.event.inputs.version }}
