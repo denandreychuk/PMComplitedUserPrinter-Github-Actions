@@ -35,7 +35,7 @@ jobs:
     - name: Run upload script
       id: upload
       run: |
-        url = $(python ./Scripts/upload.py ${{ github.event.inputs.version }})
+        url=$(python ./Scripts/upload.py ${{ github.event.inputs.version }})
         echo "::set-output name=url::$url"
     - name: Echo
       run: echo ${{ steps.upload.outputs.url }}
