@@ -33,4 +33,9 @@ jobs:
     - name: Install python dependancies
       run: pip install firebase_admin
     - name: Run upload script
-      run: python ./Scripts/upload.py ${{ github.event.inputs.version }}
+      id: upload
+      run: |
+        url = $(python ./Scripts/upload.py ${{ github.event.inputs.version }})
+        echo "::set-output name=url::$url"
+    - name: Echo
+      run: echo ${{ steps.upload.outputs.url }}
