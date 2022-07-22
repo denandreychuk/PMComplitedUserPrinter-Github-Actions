@@ -37,5 +37,10 @@ jobs:
       run: |
         url=$(python ./Scripts/upload.py ${{ github.event.inputs.version }})
         echo "::set-output name=url::$url"
-    - name: Echo
-      run: echo ${{ steps.upload.outputs.url }}
+    - name: Prepare for release
+      run: |
+        cp Scripts/Template.podspec PMComplitedUserPrinter.podspec
+        sed -i '' 's,REMOTE_XCFRAMEWORK_URL,${{ steps.upload.outputs.url }},g' PMComplitedUserPrinter.podspec
+        bundle exec fastlane bump_podspec_version version_number:${{ github.event.inputs.version }}
+    - name: Release
+      run: COCOAPODS_TRUNK_TOKEN=${{ secrets.COCOAPODS_TRUNK_TOKEN }} bundle exec pod trunk push
