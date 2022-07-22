@@ -42,5 +42,9 @@ jobs:
         cp Scripts/Template.podspec PMComplitedUserPrinter.podspec
         sed -i '' 's,REMOTE_XCFRAMEWORK_URL,${{ steps.upload.outputs.url }},g' PMComplitedUserPrinter.podspec
         bundle exec fastlane bump_podspec_version version_number:${{ github.event.inputs.version }}
+    - uses: EndBug/add-and-commit@v9
+      with:
+        message: 🚀 Release ${{ github.event.inputs.version }}
+        tag: 'v${{ github.event.inputs.version }} --force'
     - name: Release
       run: COCOAPODS_TRUNK_TOKEN=${{ secrets.COCOAPODS_TRUNK_TOKEN }} bundle exec pod trunk push
