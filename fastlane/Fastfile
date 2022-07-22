@@ -21,8 +21,4 @@ platform :ios do
     increment_version_number_in_xcodeproj(version_number: options[:version_number])
     increment_build_number_in_xcodeproj(build_number: "1")
   end
-
-  lane :bump_podspec_version do |options|
-    version_bump_podspec(version_number: options[:version_number])
-  end
 end
