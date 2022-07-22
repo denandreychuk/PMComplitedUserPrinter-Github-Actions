@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'PMComplitedUserPrinter'
-  s.version = '1.5.0'
+  s.version = '1.0.0'
   s.license = 'MIT'
   s.summary = 'Test framework'
   s.homepage = 'https://github.com/denandreychuk/PMComplitedUserPrinter'
